@@ -1,0 +1,103 @@
+Resources:	
+	https://www.youtube.com/watch?v=rEwiRBdz1us
+	https://www.youtube.com/watch?v=rr2RWms_Q8s
+	https://www.youtube.com/watch?v=p3CcfIjycBA
+
+
+					|Additionnal ressources:|
+   >Results with test_size=0.2:
+KNN Regression is best according to MSE and R^2
+Decision Tree is best acording to KL divergence and ellapsed time(s)
+Voting regression with KNN for final_estimator gives the best result
+______________________________________________________________________________________________
+				<after PCA with n_components = 9>
+______________________________________________________________________________________________
+
+Linear Regression:
+Elapsed_time:  0.08178210258483887
+Best parameters: {'normalize': False}
+Best mean squared error on test set: 2.2613673160058285
+Best R^2: 0.8333942436117515
+
+Polynomial Regression:
+elapsed_time: 22.20466423034668
+Best Parameters: {'polynomialfeatures__degree': 2}
+Mean squared error for 2 degree polynomial fit: 3.7435457547080313
+R2 score: 0.7241950621543606
+
+SVR:
+Elapsed_time:  115.52761650085449
+Best Parameters: {'C': 18.12344142405484, 'epsilon': 0.05355397792477572, 'kernel': 'rbf'}
+Best R^2: 0.9890463533661277
+Mean Squared Error on Test Set: 0.14867564618351561
+
+Decision Tree Regressor:
+Elapsed_time:  1.1350719928741455
+Best parameters: {'max_depth': 10}
+Best R^2 0.9905255248009158
+Mean squared error of the test set:  0.12859860917163335
+
+Random Forest Regressor:
+Elapsed_time:  9.840100288391113
+Best parameters: {'max_depth': 10, 'n_estimators': 20}
+Best R^2 score:  0.9926601676237882
+Mean squared error on test set: 0.0996247512711853
+
+Ridge Regression:
+Elapsed Time: 0.14983773231506348
+Best Parameters: {'alpha': 100}
+Best R^2: 0.8333886832977219
+Mean Squared Error on Test Set: 2.261442787062088
+
+Lasso Regression:
+Elapsed Time: 0.11834454536437988
+Best Parameters: {'alpha': 0.01}
+Best R^2: 0.8333319627601252
+Mean Squared Error on Test Set: 2.262212664241891
+
+K Nearest Neighbors Regression:
+Elapsed_time:  3.786882162094116
+Best Parameters: {'metric': 'euclidean', 'n_neighbors': 5, 'weights': 'distance'}
+Mean Squared Error on Test Set: 0.09083956410794876
+R-squared on Test Set: 0.9933074144208845
+______________________________________________________________________________________
+				<Ensemble Learning Results> 
+*for test_size=0.2
+
+estimators = [
+    ('KNN',knn_model),
+    ('Decision Tree',dt_model),
+    ('GradiantBoost',gbr),
+    ('Random Forest',rf_model)
+]
+KNN for final_estimator (it's the best):
+	Stacking Regressor:
+	Time elapsed: 53.65772271156311
+	Mean Squared Error: 0.09521872865731597
+	R^2: 0.9929847804034333
+
+	Voting Regressor:
+	Time elapsed: 11.687482357025146
+	Mean Squared Error: 0.08760742300151603
+	R^2: 0.9935455417299597
+
+	Second stacking using the previous Voting Regressor as input:
+	Time elapsed: 58.2125244140625
+	Mean Squared Error: 0.09315028213799639
+	R^2: 0.993137172761128
+_____________________________________________________________________
+*for test_size=0.3
+Stacking Regressor:
+Time elapsed: 45.27062797546387
+Mean Squared Error: 0.09143946154419991
+R^2: 0.9931148011786828
+
+Voting Regressor:
+Time elapsed: 9.769724369049072
+Mean Squared Error: 0.09072858509484023
+R^2: 0.993168328677736
+
+Second stacking using the previous stacking as input:
+Time elapsed: 70.69242978096008
+Mean Squared Error: 0.0925100812430937
+R^2: 0.9930341857708007
